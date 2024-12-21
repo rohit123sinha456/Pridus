@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Data Poster</title>
+    <script>
+        async function submitData() {
+            // Get input values
+            const xmlData = document.getElementById("xmlInput").value;
+            const endpoint = document.getElementById("endpointInput").value;
+
+            try {
+                // Send POST request with XML data
+                const response = await fetch(endpoint, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/xml",
+                    },
+                    body: xmlData,
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+
+                    // Extract the filename from the response
+                    const filename = data.filename;
+
+                    if (filename) {
+                        // Open a new tab and send a GET request to the specified URL
+                        const newTabUrl = `http://localhost:5000/print/${filename}`;
+                        window.open(newTabUrl, "_blank");
+                    } else {
+                        alert("Filename not found in response.");
+                    }
+                } else {
+                    alert("Failed to post XML data. Status: " + response.status);
+                }
+            } catch (error) {
+                alert("An error occurred: " + error.message);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Post XML Data</h1>
+    <form onsubmit="event.preventDefault(); submitData();">
+        <label for="xmlInput">XML Data:</label><br>
+        <textarea id="xmlInput" rows="10" cols="50" placeholder="Enter your XML data here..."></textarea><br><br>
+
+        <label for="endpointInput">Endpoint:</label><br>
+        <input type="text" id="endpointInput" placeholder="Enter endpoint URL..." size="50"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+</title>
+</head>
+<body>
+
+</body>
+</html>
