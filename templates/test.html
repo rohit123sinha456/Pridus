@@ -6,17 +6,29 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Out Patient Bill</title>
 <style>
+        table {
+            page-break-inside: auto; /* Allow page breaks inside tables */
+        }
+        tr {
+            page-break-inside: avoid; /* Avoid breaking rows across pages */
+            page-break-after: auto;
+        }
+        thead {
+            display: table-header-group; /* Repeat headers on each page */
+        }
+        tfoot {
+            display: table-footer-group; /* Repeat footers on each page */
+        }
+
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #ffffff;
         }
         .container {
-            max-width: 800px;
-            margin: 20px auto;
+            max-width: 700px;
+            margin: 2px auto;
             background: #fff;
-            padding: 20px;
+            padding: 2px;
             border: 0px solid #ddd;
             border-radius: 8px;
             box-shadow: 0 0px 0px rgba(0, 0, 0,0);
@@ -26,7 +38,6 @@
             width: 600px;
             border-top: 2px solid #000;
             padding: 20px;
-            margin: 0 auto;
         }
         .bill-header {
             text-align: center;
@@ -58,13 +69,14 @@
             font-size: 14px;
             color: #777;
         }
+        .page-break {
+        page-break-after: always; /* Forces a page break after the element */
+    }
+
     </style>
 </head>
 <body>
 <div class="container">
-<div class="header">
-    <img id="headerimg" src="" alt="My Image">
-</div>
     <div class="bill-container">
         <div class="bill-header">Out Patient Bill</div>
         <table class="bill-table" style="border-left: none; border-right: none;">
@@ -72,7 +84,6 @@
                 <td class="label">Bill No</td>
                 <td class="separator">:</td>
                 <td class="value"> <span id="BN" class="annot">Updated Title</span> </td>
-
                 <td class="label">Bill Date</td>
                 <td class="separator">:</td>
                 <td class="value"></td>
@@ -121,18 +132,20 @@
             </tr>
         </table>
     </div>
+    <table class="annot_table" id="person">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
     <div class="bill-container">
         <div class="bill-header">Pre-Cath Screening Package</div>
-        <div class="content">
-            HB, TC, DC<br>
-            Glucose, Fasting<br>
-            Glucose, Random<br>
-            SEROLOGY (HIV, HCV, HbsAg)<br>
-            Creatinine<br>
-            E.C.G<br>
-            Echo Screening with Colour Doppler<br>
-            Doctor Consultation
-        </div>
+
         <div class="footer">
             <div>Total Rs.</div>
             <div>YOU PAY Rs.</div>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outpatient Receipt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 1px;
+        }
+        .container {
+            width: 700px;
+            margin: 0 auto;
+            padding: 1px;
+        }
+        .header {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        .additional-info {
+            margin-top: 20px;
+        }
+        .additional-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+            <table>
+        <tr class="header">
+            <th colspan="4" style="text-align: center;">Outpatient Receipt</th>
+        </tr>
+        <tr>
+            <td>Receipt No</td>
+            <td>: <span data-field="ReceiptNo" class="annot"></span></td>
+            <td>Receipt Date/Time</td>
+            <td>: <span data-field="ReceiptDate" class="annot"></span></td>
+        </tr>
+        <tr>
+            <td>Patient Name</td>
+            <td>: <span data-field="PatientName" class="annot"></span></td>
+            <td>Patient Code</td>
+            <td>: <span data-field="PatientCode" class="annot"></span></td>
+        </tr>
+        <tr class="footer">
+            <td colspan="4">Received with thanks from  <span data-field="PatientName" class="annot"></span>  <span data-field="AmountInWords" class="annot"></span> by  <span data-field="PaymentMode" class="annot"></span> ( Rs.  <span data-field="Amount" class="annot"></span> )</td>
+        </tr>
+    </table>
+
+        <div class="additional-info">
+            <div class="additional-row">
+                <div><strong>Total Received Amount:</strong> <span data-field="Amount" class="annot"></span></div>
+                <div><strong>Received By:</strong> DESUNSLG3</div>
+            </div>
+            <div class="additional-row">
+                <div><strong>Due Amount:</strong> Rs. <span data-field="DueAmount" class="annot"></span></div>
+                <div></div>
+            </div>
+            <div class="additional-row">
+                <div><strong>Payment Received Against</strong></div>
+                <div></div>
+            </div>
+            <div class="additional-row">
+                <div><strong>OPD Bill no:</strong> <span data-field="BillNo" class="annot"></span></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,68 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print PDF</title>
-    <style>
-        body, html {
+<div id="pdfViewer" style="width: 100%; overflow: auto;"></div>
+<style>
+    @media print {
+        @page {
+            margin: 1px; /* Remove page margins */
+        }
+        body {
             margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            page-break-after: always; /* Ensure proper page breaks */
+            margin: 0; /* Remove internal margins */
         }
         #pdfViewer {
+            display: block;
             width: 100%;
-            height: 100%;
-            overflow-y: auto;
-            position: relative;
+            margin: 0 auto; /* Center align if needed */
+            padding: 0;
+            overflow-y: hidden;
+            overflow-x: hidden;
         }
-        iframe {
-            border: none;
-            width: 100%;
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+<script>
+    const url = "{{ url }}"; // Path to the PDF file
+
+    // PDF.js rendering setup
+    pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
+        const pdfDoc = pdfDoc_;
+        const viewer = document.getElementById('pdfViewer');
+        const scale = 1.5; // Scale for better rendering
+
+        // Function to render a single page
+        function renderPage(pageNum) {
+            return pdfDoc.getPage(pageNum).then(function (page) {
+                const viewport = page.getViewport({ scale });
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                console.log(viewport.height);
+                canvas.height = 1000; // viewport.height;
+                canvas.width = 800;//viewport.width;
+                viewer.appendChild(canvas);
+
+                return page.render({
+                    canvasContext: context,
+                    viewport: viewport,
+                }).promise;
+            });
         }
-        @media print {
-            #pdfViewer {
-                overflow-y: hidden;
-                overflow-x: hidden;
-            }
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-</head>
-<body>
-    <div id="pdfViewer"></div>
 
-    <script>
-        var url = "{{ url }}"; // Path to the PDF file
-
-        // PDF.js rendering setup
-        pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
-            var pdfDoc = pdfDoc_;
-            var viewer = document.getElementById('pdfViewer');
-
+        // Render all pages
+        async function renderAllPages() {
+            console.log(pdfDoc.numPages)
             for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-                pdfDoc.getPage(pageNum).then(function(page) {
-                    var scale = 1.5; // Scale for better rendering
-                    var viewport = page.getViewport({ scale: scale });
-                    var canvas = document.createElement('canvas');
-                    var context = canvas.getContext('2d');
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
-                    viewer.appendChild(canvas);
-
-                    // Render the page
-                    page.render({
-                        canvasContext: context,
-                        viewport: viewport
-                    }).promise.then(function() {
-                    // Trigger the print dialog after rendering the first page
-                    window.print();
-                });
-                });
+                await renderPage(pageNum); // Sequential rendering
             }
+        }
+
+        // Ensure rendering is complete before printing
+        renderAllPages().then(() => {
+            // Allow DOM updates to complete
+            setTimeout(() => {
+                window.print(); // Trigger print
+            }, 500);
         });
-    </script>
-</body>
-</html>
+    });
+</script>

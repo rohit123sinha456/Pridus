@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Sales Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .no-border {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Pharmacy Sales Invoice/Cash Memo</h1>
+    <h2>(DL-8414-SB, DL-8404-S)</h2>
+    </div>
+
+
+    <div>
+    <table>
+        <tr>
+            <td>Bill No</td>
+            <td><span data-field="BillNo" class="annot"></span></td>
+            <td>Bill Date</td>
+            <td><span data-field="BillDate" class="annot"></span></td>
+        </tr>
+        <tr>
+            <td>Patient Name</td>
+            <td><span data-field="PatientName" class="annot"></span></td>
+            <td>Patient Status</td>
+            <td><span data-field="PatientStatus" class="annot"></span></td>
+        </tr>
+        <tr>
+            <td>Patient Code</td>
+            <td colspan="3"><span data-field="PatientCode" class="annot"></span></td>
+        </tr>
+    </table>
+    </div>
+
+    <div>
+    <table class="annot_table" id="Drugs">
+        <thead>
+            <tr>
+                <th>Drug</th>
+                <th>HSN</th>
+                <th>Batch</th>
+                <th>ExpDate</th>
+                <th>Rate</th>
+                <th>QTY</th>
+                <th>Disc</th>
+                <th>Amt</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    </div>
+
+    <div>
+    <table>
+        <tr>
+            <td>Gross Amount</td>
+            <td>3,661.62</td>
+        </tr>
+        <tr>
+            <td>Disc. Amount</td>
+            <td>292.93</td>
+        </tr>
+        <tr>
+            <td>Total TAX</td>
+            <td>202.04</td>
+        </tr>
+        <tr>
+            <td>Rounded off</td>
+            <td>- 0.04</td>
+        </tr>
+        <tr>
+            <td>Net Amount</td>
+            <td>3,369.00</td>
+        </tr>
+        <tr>
+            <td>Paid</td>
+            <td>3,369.00</td>
+        </tr>
+        <tr>
+            <td>Due Amount</td>
+            <td>0.00</td>
+        </tr>
+    </table>
+    </div>
+
+    <div>
+    <h3>HSN Code Summary</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Sl No.</th>
+                <th>HSN Code</th>
+                <th>Taxable Value</th>
+                <th>CGST Rate</th>
+                <th>CGST (Rs.)</th>
+                <th>SGST Rate</th>
+                <th>SGST (Rs.)</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>9099</td>
+                <td>487.25</td>
+                <td>0.00</td>
+                <td>0.00</td>
+                <td>0.00</td>
+                <td>0.00</td>
+                <td>0.00</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>

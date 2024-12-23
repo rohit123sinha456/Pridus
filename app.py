@@ -52,3 +52,6 @@ def serve_pdf(filename):
     pdf_path = os.path.join("requests_files", filename)
     return send_file(pdf_path, mimetype="application/pdf")
 
+
+if __name__ == "__main__":
+    app.run(debug=True,host="0.0.0.0",port=5000)
