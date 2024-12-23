@@ -155,9 +155,13 @@ def fill_html_from_xml_data(xml_datas,html_file, output_file):
             print(f"The id of the table is {table.get('id')}")
             thead = table.find('thead')
             header_cells = thead.find_all('th')  # Extract all header cells
-
-            # Extract header text
             headers = [header.text.strip() for header in header_cells]
+            # Use this
+            # headers = []
+            # for header in header_cells:
+            #     data_field = header.get('data-field')  # Get the data-field attribute if it exists
+            #     if data_field:  # Add to the list only if data-field exists
+            #         headers.append(data_field)
             print(f"Extracted headers: {headers}")
 
             # Split rows into chunks and create separate tables
@@ -201,9 +205,9 @@ def fill_html_from_xml_data(xml_datas,html_file, output_file):
                     page_break = soup.new_tag('div', style="page-break-after: always;")
                     soup.body.append(page_break)
 
-    for div in divs_after_table:
-        soup.body.append(div)
-    table.extract()
+            for div in divs_after_table:
+                soup.body.append(div)
+            table.extract()
     with open(output_file, 'w', encoding='utf-8') as file:
         file.write(str(soup))
 

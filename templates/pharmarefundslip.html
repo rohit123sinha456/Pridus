@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Refund Slip</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            text-align: center;
+        }
+        .no-border {
+            border: none;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+    <h2 style="text-align: center;">Pharmacy Refund Slip</h2>
+    <table>
+        <tr>
+            <td class="no-border">Refund No</td>
+            <td class="no-border">SD01/PHA/RFND/2024-2025/RE60089499</td>
+            <td class="no-border">Refund Date</td>
+            <td class="no-border">04.07.2024</td>
+        </tr>
+        <tr>
+            <td class="no-border">Bill No</td>
+            <td class="no-border">SD01/PHA/BILL/2024-2025/6001796044</td>
+            <td class="no-border">Bill Date</td>
+            <td class="no-border">02.07.2024</td>
+        </tr>
+        <tr>
+            <td class="no-border">Patient Name</td>
+            <td class="no-border">SUMITA RANI SAHA</td>
+            <td class="no-border">Customer Name</td>
+            <td class="no-border">IPD Patient</td>
+        </tr>
+        <tr>
+            <td class="no-border">Patient Code</td>
+            <td class="no-border">SD01/PAT/1000175265</td>
+            <td class="no-border"></td>
+            <td class="no-border"></td>
+        </tr>
+    </table>
+    </div>
+
+    <br>
+    <div>
+    <table class="annot_table" id="MedsName">
+        <thead>
+            <tr>
+                <th>Drug</th>
+                <th>Batch</th>
+                <th>Exp.Date</th>
+                <th>MRP</th>
+                <th>QTY</th>
+                <th>Disc%</th>
+                <th>Amt</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Syringes -10ml (BD)</td>
+                <td>2401519</td>
+                <td>30.12.2028</td>
+                <td>34.00</td>
+                <td>2.00</td>
+                <td>0.00</td>
+                <td>68.00</td>
+            </tr>
+            <tr>
+                <td>Syringe 5ml (Omnivan)</td>
+                <td>23N19M8201</td>
+                <td>30.10.2028</td>
+                <td>18.15</td>
+                <td>1.00</td>
+                <td>0.00</td>
+                <td>18.15</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <br>
+
+    <div>
+    <table>
+        <tr>
+            <td class="text-right bold no-border">Refund Net Amount</td>
+            <td class="text-right bold no-border">86.15</td>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>
