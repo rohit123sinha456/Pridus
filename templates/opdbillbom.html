@@ -1,161 +1,175 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Out Patient Bill</title>
-<style>
-        table {
-            page-break-inside: auto; /* Allow page breaks inside tables */
-        }
-        tr {
-            page-break-inside: avoid; /* Avoid breaking rows across pages */
-            page-break-after: auto;
-        }
-        thead {
-            display: table-header-group; /* Repeat headers on each page */
-        }
-        tfoot {
-            display: table-footer-group; /* Repeat footers on each page */
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-        }
-        .container {
-            max-width: 700px;
-            margin: 2px auto;
-            background: #fff;
-            padding: 2px;
-            border: 0px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 0px 0px rgba(0, 0, 0,0);
-        }
-
-        .bill-container {
-            width: 600px;
-            border-top: 2px solid #000;
-            padding: 20px;
-        }
-        .bill-header {
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .bill-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .bill-table td {
-            padding: 5px;
-        }
-        .bill-table .label {
-            text-align: right;
-            width: 25%;
-        }
-        .bill-table .separator {
-            text-align: center;
-            width: 5%;
-        }
-        .bill-table .value {
-            text-align: left;
-            width: 70%;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #777;
-        }
-        .page-break {
-        page-break-after: always; /* Forces a page break after the element */
-    }
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OPD BILL(BOM Meterial)</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        text-align: left;
+      }
+      label {
+        font-weight: 700;
+      }
+      hr {
+        border: 1px solid black;
+        opacity: 1;
+      }
+      .fs_20 {
+        font-size: 20px;
+      }
+      .table > :not(caption) > * > * {
+        padding: 0.25rem 0.5rem;
+      }
+      .afterColon {
+        position: relative;
+        width: 200px;
+      }
+      .w_400 {
+        width: 400px;
+      }
+      .afterColon::after {
+        content: ":";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 5px;
+      }
+      .under_sign {
+        width: 300px;
+        margin-left: auto;
+      }
     </style>
-</head>
-<body>
-<div class="container">
-    <div class="bill-container">
-        <div class="bill-header">Out Patient Bill</div>
-        <table class="bill-table" style="border-left: none; border-right: none;">
-            <tr>
-                <td class="label">Bill No</td>
-                <td class="separator">:</td>
-                <td class="value"> <span data-field="OPD_BILL" class="annot"></span> </td>
-                <td class="label">Bill Date</td>
-                <td class="separator">:</td>
-                <td class="value"></td>
-            </tr>
-            <tr>
-                <td class="label">Patient Name</td>
-                <td class="separator">:</td>
-                <td class="value"><span data-field="PAT_NAME" class="annot">Updated Title</span></td>
+  </head>
+  <body>
+    <img src="/static/header.png" class="w-100 pb-3" alt="header_path">
+    <div class="text-center">
+      <h2>Out Patient Bill</h2>
+    </div>
 
-                <td class="label">Sex, Age</td>
-                <td class="separator">:</td>
-                <td class="value"></td>
-            </tr>
-            <tr>
-                <td class="label">Patient Address</td>
-                <td class="separator">:</td>
-                <td class="value"><span data-field="PA" class="annot">Updated Title</span></td>
+    <div>
+      <table class="table table-borderless">
+        <tr>
+          <th class="afterColon">Bill No</th>
+          <td><span data-field="OPD_BILL" class="annot"></span></td>
+          <th class="afterColon">Bill Date</th>
+          <td><span>Lorem Ipsum</span></td>
+        </tr>
+        <tr>
+          <th class="afterColon">Patient Name</th>
+          <td><span data-field="PAT_NAME" class="annot"></span></td>
+          <th class="afterColon">Sex, Age</th>
+          <td><span>Lorem Ipsum</span></td>
+        </tr>
+        <tr>
+          <th class="afterColon">Patient Address</th>
+          <td><span>348729</span></td>
+          <th class="afterColon">Patient Code</th>
+          <td>
+            <span data-field="PATIENT_ID" class="annot"></span>
+          </td>
+        </tr>
+      </table>
+      <hr />
+      <table class="table table-borderless">
+        <tr>
+          <th class="afterColon">Scheme</th>
+          <td><span>348729</span></td>
+          <th class="afterColon">Doctor</th>
+          <td><span>Lorem Ipsum</span></td>
+        </tr>
+        <tr>
+          <th class="afterColon">Payer</th>
+          <td><span data-field="PAYERNAME" class="annot">348729</span></td>
+          <th class="afterColon">Reference No.</th>
+          <td><span></span></td>
+        </tr>
+        <tr>
+          <th class="afterColon">Validity Date</th>
+          <td><span data-field="VDATE" class="annot"></span></td>
+          <th></th>
+          <td><span></span></td>
+        </tr>
+      </table>
+    </div>
 
-                <td class="label">Patient Code</td>
-                <td class="separator">:</td>
-                <td class="value"><span data-field="PATIENT_ID" class="annot">Updated Title</span></td>
-            </tr>
-            <tr>
-                <td class="label">Scheme</td>
-                <td class="separator">:</td>
-                <td class="value"></td>
+    <hr />
 
-                <td class="label">Doctor</td>
-                <td class="separator">:</td>
-                <td class="value"></td>
-            </tr>
-            <tr>
-                <td class="label">Payer</td>
-                <td class="separator">:</td>
-                <td class="value"><span data-field="PAYERNAME" class="annot">Updated Title</span></td>
+    <div class="text-center">
+      <h2>Pre-Cath Screening Package</h2>
+    </div>
 
-                <td class="label">Reference No.</td>
-                <td class="separator">:</td>
-                <td class="value"></td>
-            </tr>
-            <tr>
-                <td class="label">Validity Date</td>
-                <td class="separator">:</td>
-                <td class="value"></td>
-                <td colspan="3"></td>
-            </tr>
-        </table>
+    <div>
+      <table class="table table-borderless">
+        <tr>
+          <th class="w_400">HB, TC, DC</th>
+          <td><span>&#8377;4000</span></td>
+        </tr>
+        <tr>
+          <th class="w_400">Glucose, Fasting</th>
+          <td><span>&#8377;4000</span></td>
+        </tr>
+        <tr>
+          <th class="w_400">Glucose, Random</th>
+          <td><span>&#8377;4000</span></td>
+        </tr>
+        <tr>
+          <th class="w_400">SEROLOGY (HIV, HCV, HbsAg)</th>
+          <td><span>&#8377;4000</span></td>
+        </tr>
+        <tr>
+          <th class="w_400">Creatinine</th>
+          <td><span>&#8377;4000</span></td>
+        </tr>
+        <tr>
+          <th class="w_400">E.C.G</th>
+          <td><span>&#8377;4000</span></td>
+        </tr>
+        <tr>
+          <th class="w_400">Echo Screenning with Colour Doppler</th>
+          <td><span>&#8377;4000</span></td>
+        </tr>
+        <tr>
+          <th class="w_400">Doctor Consultation</th>
+          <td><span>&#8377;4000</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="under_sign">
+      <div>
+        <label class="fs_20">Total Rs.</label> <span>&#8377;2034300.00</span>
+      </div>
+      <div>
+        <label class="fs_20">YOU PAY Rs.</label> <span>&#8377;1034300.00</span>
+      </div>
     </div>
     <div>
-        <div class="bill-header">Pre-Cath Screening Package</div>
-        <table class="annot_table" id="person">
-                <thead>
-                    <tr>
-                        <th>TName</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+      <label class="fs_20">You Save Rs.</label><span>&#8377;1000000.00</span>
     </div>
-    <div class="bill-container">
-        <div class="footer">
-            <div>Total Rs. <span data-field="GROSS_AMOUNT" class="annot"></span> </div>
-            <div>YOU PAY Rs. <span data-field="AMOUNT" class="annot"></span> </div>
 
-            <div>You Save Rs <span data-field="DISCOUNT" class="annot"></span></div>
-            <div>**Reports To Be Collected Within 48 Hours of Scheduled Delivery</div>
-            <div>Prepared By: AGANGULY</div>
-            <div>Time: 07:29:49</div>
-        </div>
+    <div>
+      <table class="table table-borderless">
+        <tr>
+          <td>
+            **Reports To Be Collected Within 48 Hours of Scheduled Delivery
+          </td>
+          <td>
+            Prepared By: <span>Mrinmoy Ghosh</span> <br />
+            Time: 10:20PM
+          </td>
+        </tr>
+      </table>
     </div>
-</div>
-</body>
+  <script>
+    window.onload = ()=>{
+      setTimeout(() => {
+                window.print(); // Trigger print
+      }, 500);
+    }
+  </script>
+  </body>
 </html>

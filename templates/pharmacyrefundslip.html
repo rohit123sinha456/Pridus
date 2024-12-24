@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy Refund Slip</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        text-align: left;
+      }
+      label {
+        font-weight: 700;
+      }
+      hr {
+        border: 1px solid black;
+        opacity: 1;
+      }
+      .fs_20 {
+        font-size: 20px;
+      }
+      .table > :not(caption) > * > * {
+        padding: 0.25rem 0.5rem;
+      }
+      .afterColon {
+        position: relative;
+        width: 200px;
+      }
+      .w_400 {
+        width: 400px;
+      }
+      .afterColon::after {
+        content: ":";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 5px;
+      }
+      .under_sign {
+        width: 350px;
+        margin-left: auto;
+      }
+    </style>
+  </head>
+  <body>
+  <img src="/static/header.png" class="w-100 pb-3" alt="header_path">
+    <div class="container">
+      <div>
+        <hr />
+      </div>
+      <div class="text-center">
+        <h3>Pharmacy Refund Slip</h3>
+      </div>
+
+      <div><hr /></div>
+
+      <div>
+        <table class="table table-borderless">
+          <tr>
+            <th class="afterColon">Refund No</th>
+            <td><span data-field="OPD_BILL" class="annot"></span></td>
+            <th class="afterColon">Receipt Date/Time</th>
+            <td><span data-field="OPD_BILL" class="annot"></span></td>
+          </tr>
+          <tr>
+            <th class="afterColon">Bill NO</th>
+            <td><span data-field="PAT_NAME" class="annot"></span></td>
+            <th class="afterColon">Bill Date</th>
+            <td><span data-field="OPD_BILL" class="annot"></span></td>
+          </tr>
+          <tr>
+            <th class="afterColon">Patient Name</th>
+            <td><span data-field="PAT_NAME" class="annot"></span></td>
+            <th class="afterColon">Customer Name</th>
+            <td><span data-field="OPD_BILL" class="annot"></span></td>
+          </tr>
+          <tr>
+            <th class="afterColon">Patient Code</th>
+            <td><span data-field="PAT_NAME" class="annot"></span></td>
+            <th></th>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <table class="annot_table table table-bordered">
+          <thead>
+            <tr>
+              <th>Drug</th>
+              <th>Batch</th>
+              <th>Exp.Date</th>
+              <th>MRP</th>
+              <th>QTY</th>
+              <th>Disc%</th>
+              <th>Amt</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="under_sign">
+        <div>
+          <label class="fs_20">Refund Net Amount:</label>
+          <span>&#8377;2034300.00</span>
+        </div>
+        <div>
+          <label class="fs_20">Refund Done by :</label>
+          <span>Mrinmoy Ghosh</span>
+        </div>
+      </div>
+    </div>
+    <script>
+    window.onload = ()=>{
+      setTimeout(() => {
+                window.print(); // Trigger print
+      }, 500);
+    }
+  </script>
+  </body>
+</html>

@@ -1,4 +1,6 @@
 import os
+from sys import excepthook
+
 import pdfkit
 from bs4 import BeautifulSoup
 import tempfile
@@ -115,10 +117,14 @@ def fill_html_from_xml_data(xml_datas,html_file, output_file):
         # Setting singular annotation annotations
         for element in soup.find_all(attrs={"data-field": True}):
             field_name = element['data-field']  # Get the value of data-field
-            xml_value = root.find(f".//{field_name}")  # Find the corresponding XML tag
-            if xml_value is not None:
-                element.string = xml_value.text  # Update the content
-                print(f"Updated '{field_name}' to '{xml_value.text}'")
+            try:
+                xml_value = root.find(f".//{field_name}")  # Find the corresponding XML tag
+                if xml_value is not None:
+                    element.string = xml_value.text  # Update the content
+                    print(f"Updated '{field_name}' to '{xml_value.text}'")
+            except Exception as e:
+                print(str(e))
+
         # elements = soup.find_all(class_="annot")
         # for element in elements:
         #     if element is not None:
@@ -143,7 +149,7 @@ def fill_html_from_xml_data(xml_datas,html_file, output_file):
             while next_sibling:
                 next_sibling_name = getattr(next_sibling, 'name', None)
                 print(f"The name of next sibling {next_sibling.name}")
-                if next_sibling_name in ['div','table']:
+                if next_sibling_name in ['div','table','script']:
                     divs_after_table.append(next_sibling)
                     # next_sibling.extract()  # Remove it from the DOM
                 next_sibling = next_sibling.find_next_sibling()
@@ -170,10 +176,10 @@ def fill_html_from_xml_data(xml_datas,html_file, output_file):
                             range(0, len(root.findall(table_id)), rows_per_page)]
 
             # Get the table body element
-
+            table_class = [cls for cls in table['class'] if cls != 'annot_table']
             for i, chunk in enumerate(table_chunks):
                 new_table = soup.new_tag('table', attrs={'class': f'annot_table_{i}'})
-
+                new_table['class'].extend(table_class)
                 # Reuse the extracted headers
                 new_thead = soup.new_tag('thead')
                 header_row = soup.new_tag('tr')
@@ -203,7 +209,11 @@ def fill_html_from_xml_data(xml_datas,html_file, output_file):
                 # Add a page break after the table
                 if i < len(table_chunks) - 1:
                     page_break = soup.new_tag('div', style="page-break-after: always;")
+                    image_div = soup.new_tag('div')
+                    image_tag = soup.new_tag('img', src='/static/header.png', **{'class': 'w-100 pb-3'})
+                    image_div.append(image_tag)
                     soup.body.append(page_break)
+                    soup.body.append(image_div)
 
             for div in divs_after_table:
                 soup.body.append(div)
@@ -234,6 +244,7 @@ def fill_html_from_xml(xml_datas,html_file, output_file):
 
     with open(output_file, 'w', encoding='utf-8') as file:
         file.write(str(soup))
+
 
 def html_to_pdf(input_html: str, output_pdf: str):
     file_path = str(Path(current_app.config.root_path)/'templates'/'static')
@@ -304,6 +315,28 @@ def generate(xml_data,template_name):
             print(temp_file_path)
             print(template_name)
             print(f"Final output pdf file {output_pdf}")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        raise Exception("Error in mapping the template")
+
+    return(filename)
+
+
+
+def generate_html(xml_data,template_name):
+    # Generate a timestamp
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    # Use the timestamp in a filename
+    filename = f"file_{timestamp}.html"
+    output_html = os.path.join("requests_files_html",filename)   # Output filled PDF
+
+    # Load the HTML file
+    try:
+        fill_html_from_xml_data(xml_data, template_name, output_html)
+        print("Written file succesfully")
+        print(template_name)
+        print(f"Final output pdf file {output_html}")
 
     except Exception as e:
         print(f"An error occurred: {e}")

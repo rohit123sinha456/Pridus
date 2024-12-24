@@ -47,10 +47,11 @@
   </head>
   <body>
   <img src="/static/header.png" class="w-100 pb-3" alt="header_path">
-
     <div class="text-center">
-      <h2>Out Patient Bill</h2>
+      <h2>PHARMACY RECEIPT</h2>
     </div>
+
+    <hr />
 
     <div>
       <table class="table table-borderless">
@@ -63,20 +64,47 @@
         <tr>
           <th class="afterColon">Patient Name</th>
           <td><span data-field="PAT_NAME" class="annot"></span></td>
-          <th class="afterColon">Patient Code</th>
+          <th class="afterColon">Customer Name</th>
           <td><span data-field="OPD_BILL" class="annot"></span></td>
+        </tr>
+        <tr>
+          <th class="afterColon">Patient Code</th>
+          <td><span data-field="PAT_NAME" class="annot"></span></td>
+          <th></th>
+          <td></td>
+        </tr>
+        <tr>
+          <th class="afterColon">Bill NO</th>
+          <td><span data-field="PAT_NAME" class="annot"></span></td>
+          <th class="afterColon">Bill Date</th>
+          <td><span data-field="OPD_BILL" class="annot"></span></td>
+        </tr>
+        <tr>
+          <th class="afterColon">Total Bill Amount</th>
+          <td><span data-field="PAT_NAME" class="annot"></span></td>
+          <th class="afterColon">Receipt Amount</th>
+          <td><span data-field="OPD_BILL" class="annot"></span></td>
+        </tr>
+        <tr>
+          <th class="afterColon">Amount Due</th>
+          <td><span data-field="PAT_NAME" class="annot"></span></td>
+          <th></th>
+          <td></td>
         </tr>
       </table>
     </div>
 
-    <div>
-      <hr />
-    </div>
+    <hr />
+
     <div>
       <table class="table table-borderless">
         <tr>
           <td class="text-center">
-            Received with thanks from Three Thousand Rupees by Cash ( )
+            Received with thanks from Five Thousand Four Hundred Forty Rupees by
+            ( Rs. ) <br />
+            { Document No: <span data-field="" class="annot"></span>, Bank:
+            <span data-field="" class="annot"></span>, Date:
+            <span data-field="" class="annot"></span>}
           </td>
         </tr>
       </table>

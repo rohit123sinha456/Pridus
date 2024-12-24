@@ -1,27 +1,27 @@
 <div id="pdfViewer" style="width: 100%; overflow: auto;"></div>
-<style>
-    @media print {
-        @page {
-            margin: 1px; /* Remove page margins */
-        }
-        body {
-            margin: 0;
-        }
-        canvas {
-            display: block;
-            page-break-after: always; /* Ensure proper page breaks */
-            margin: 0; /* Remove internal margins */
-        }
-        #pdfViewer {
-            display: block;
-            width: 100%;
-            margin: 0 auto; /* Center align if needed */
-            padding: 0;
-            overflow-y: hidden;
-            overflow-x: hidden;
-        }
-    }
-</style>
+<!--<style>-->
+<!--    @media print {-->
+<!--&lt;!&ndash;        @page {&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 1px; /* Remove page margins */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        body {&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        canvas {&ndash;&gt;-->
+<!--&lt;!&ndash;            display: block;&ndash;&gt;-->
+<!--&lt;!&ndash;            page-break-after: always; /* Ensure proper page breaks */&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 0; /* Remove internal margins */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        #pdfViewer {&ndash;&gt;-->
+<!--&lt;!&ndash;            display: block;&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 0 auto;&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 0;&ndash;&gt;-->
+<!--&lt;!&ndash;            overflow-y: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;            overflow-x: hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--    }-->
+<!--</style>-->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 <script>
